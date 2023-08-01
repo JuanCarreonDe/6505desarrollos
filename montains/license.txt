@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ua Pou - Marquesas Island
+* source:	https://sketchfab.com/3d-models/ua-pou-marquesas-island-ab9e9f82d5774675950ef211ae63580c
+* author:	SebastianSosnowski (https://sketchfab.com/SebastianSosnowski)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ua Pou - Marquesas Island" (https://sketchfab.com/3d-models/ua-pou-marquesas-island-ab9e9f82d5774675950ef211ae63580c) by SebastianSosnowski (https://sketchfab.com/SebastianSosnowski) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
