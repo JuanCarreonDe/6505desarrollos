@@ -10,6 +10,7 @@ const Contacto = () => {
         <span className="info__span"></span>
         <h1 className="info__h1">Contacto</h1>
       </div>
+      <div className="info__body">
       <ul className="contacto__ul">
         <li className="contacto__li">
           <img src={direccion} alt="" className="contacto__img" />
@@ -26,6 +27,7 @@ const Contacto = () => {
           <p className="contacto__p">hola@6505desarrollos.com.mx</p>
         </li>
       </ul>
+      </div>
     </>
   );
 };

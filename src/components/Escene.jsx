@@ -33,7 +33,7 @@ import ComencemosModel from "./canvas/ComencemosModel";
 // import SomethingInfo from "./Info/SomethingInfo";
 
 // consts
-const radius = 100; // Radio del circulo
+const radius = 150; // Radio del circulo
 const center = { x: 0, z: 0 }; // Centro del circulo (coordenadas x y z)
 // const GruopIds = ["PlanetInfo", "PcInfo", "SomethingInfo"];
 // const ChildDiv = ["img_01", "img_02", "img_03"];
@@ -127,25 +127,25 @@ const Escene = () => {
     models.at(0),
     radius,
     center,
-    -5
+    -2
   );
   const posServicios = calculateTargetCoordinates(
     models.at(1),
     radius,
     center,
-    -5
+    -2
   );
   const posContacto = calculateTargetCoordinates(
     models.at(2),
     radius,
     center,
-    -5
+    -2
   );
   const posComencemos = calculateTargetCoordinates(
     models.at(3),
     radius,
     center,
-    -5
+    -2
   );
 
   return (
@@ -153,24 +153,27 @@ const Escene = () => {
       <Canvas
         camera={{ position: [0, 700, 10], fov: 30 }}
         onPointerDown={() => setLerping(false)}
-        style={{ background: "#1a1444" }}
+        style={{ 
+          // background: "#1a1444"
+          background: "#000"
+         }}
         onWheel={() => {
           setLerping(false);
-          ref.current.maxDistance = 60;
+          ref.current.maxDistance = 150;
         }}
       >
-        <fog attach="fog" args={["#000", 90, 300]} />
+        {/* <fog attach="fog" args={["#1a1444", 80, 300]} /> */}
         <Suspense fallback={<CanvasLoader />}>
           <OrbitControls
             ref={ref}
             minDistance={25}
-            maxPolarAngle={Math.PI / 2.2}
+            // maxPolarAngle={Math.PI / 2.2}
             // set panning limits
             onChange={(e) => {
               const maxX = 500;
               const minX = -500;
-              const maxY = 10;
-              const minY = -1;
+              const maxY = 100;
+              const minY = -100;
               const maxZ = 500;
               const minZ = -500;
               const x = e?.target.target.x;
@@ -190,10 +193,10 @@ const Escene = () => {
           />
 
           {/* args = color="#76c564" near={5} far={100} */}
-          <fog attach="fog" args={["#1a1444", 50, 100]} />
+          {/* <fog attach="fog" args={["#000", 100, 240]} /> */}
           {/* <fogExp2 color={"#29153d"} density={0.05} attach="fog" isFogExp2 /> */}
           <Stars
-            radius={100} // Radius of the inner sphere (default=100)
+            radius={200} // Radius of the inner sphere (default=100)
             depth={50} // Depth of area where stars should fit (default=50)
             count={10000} // Amount of stars (default=5000)
             factor={6} // Size factor (defa0ult=4)
@@ -230,7 +233,7 @@ const Escene = () => {
           /> */}
           {/* <Plane /> */}
           <Plane />
-          {/* <GridPlane /> */}
+          <GridPlane />
           {/* <SphereM /> */}
           <Animate
             controls={ref}

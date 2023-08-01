@@ -22,6 +22,7 @@ body {
   color: #fff;
   font-family: "Monserrat", sans-serif;
   margin: 0;
+  overflow: hidden;
 }
 
 section {
@@ -97,7 +98,7 @@ canvas {
   background: -webkit-linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(3,0,17,1) 100%);
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(3,0,17,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#2c206a",GradientType=1);
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
 }
 
@@ -108,8 +109,7 @@ canvas {
     align-items: center;
     justify-content: space-evenly;
     padding: 10px 0;
-    /* border: 1px solid greenyellow; */
-    border-bottom:1px solid #fff ;
+    /* border-bottom:1px solid #fff ; */
 }
 
 .btns__li{
@@ -147,8 +147,8 @@ canvas {
 }
 
 .btns__button {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   background: none;
   border: 1px solid #a200ff;
   border-radius: 50%;
@@ -158,6 +158,7 @@ canvas {
   animation-delay: all 0.3s;
   margin: 10px 10px;
   z-index: 1;
+  display: none;
 }
 
 .btns__button--active{
@@ -169,19 +170,29 @@ height: 10px;
 /* logo */
 .escene__title{
   position: absolute;
-  top: 5vh;
   top: 0;
-  left: 0;
+  left: 5vh;
   height: 15vh;
   width: 100%;
   display: flex;
   justify-content: start;
-  border: 1px solid red;
+  align-items: center;
+  /* border: 1px solid red; */
+
+  /* position: absolute;
+    top: 3vh;
+    left: 15vh;
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    border: 1px solid red; */
 }
 
 .title__img{
-  width: 400px;
-  object-fit: cover;
+  height: 40%;
+  /* width: 25%; */
+  object-fit: contain;
   /* border: 1px solid green; */
 }
 
@@ -193,7 +204,7 @@ height: 10px;
   bottom: 0;
   left: -1000px;
   /* right: 50%; */
-  width: 50%;
+  width: 70vh;
   height: fit-content;
   margin: auto;
   padding: 35px;
@@ -208,13 +219,13 @@ height: 10px;
   flex-direction: column;
   align-items: center;
   backdrop-filter: blur(5px);
-  height: 65vh;
-  /* overflow: scroll; */
+  height: 70vh;
+  overflow: scroll;
 }
 
 .escene__info--active{
   /* border: none; */
-  left: 45px;
+  left: 30vh;
   margin: auto;
   /* right: 100%; */
   opacity: 1;
@@ -251,6 +262,10 @@ height: 10px;
 }
 
 /* Nosotros / Servicios*/
+.info__body{
+  overflow: scroll;
+}
+
 .info__ul{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -266,6 +281,8 @@ height: 10px;
 .info__li::marker{
   width: 10px;
 }
+
+
 
 /* contacto */
 .contacto__ul{
@@ -308,7 +325,7 @@ height: 10px;
 
 .comencemos__p{
   text-align: center;
-  /* margin-bottom: 25px; */
+  margin-bottom: 25px;
   color: #d6d6d6;
 }
 
@@ -421,7 +438,7 @@ background-image: linear-gradient(to right,#c01a87, #5574f2);
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 1px solid #fff;
+  border: 1px solid #ffffff;
   /* background-color: #ffffff; */
   /* position: absolute; */
   pointer-events: none;
@@ -438,27 +455,46 @@ background-image: linear-gradient(to right,#c01a87, #5574f2);
 
 ::-webkit-scrollbar{
   width: 10px;
-  height: 10px;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-  /* background-color: darkgrey; */
-
-}
-
-::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-button{
   display: none;
-  background: none;
+
+}
+
+@media (max-width: 850px) {
+  .escene__info{
+    width: 90%;
+    right: 0;
+  }
+
+  .escene__info--active{
+    left: 0;
+  }
+
+  .escene__title{
+    justify-content: center;
+    left: 0;
+  }
+  .title__img{
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 
 @media (max-width: 500px) {
   .cursor, .cursor2 {
     display: none;
+  }
+
+  .title__img{
+    width: 75%;
+  }
+
+  .btns__span{
+    display: none;
+  }
+
+  .btns__button {
+    display: block;
   }
 }

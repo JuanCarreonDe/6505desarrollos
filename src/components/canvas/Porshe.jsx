@@ -11,7 +11,7 @@ const Porshe = () => {
     rotation={[(-2 * Math.PI) / 180, (110 * Math.PI) / 180, 0]}
   >
     <mesh {...model.nodes["EXPORT_GOOGLE_SAT_WM"]}>
-      <meshBasicMaterial attach="material" color="#543A59" wireframe fog={false}
+      <meshBasicMaterial attach="material" color="#002f3a" wireframe fog={false}
       />
     </mesh>
   </group>

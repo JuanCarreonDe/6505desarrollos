@@ -10,7 +10,7 @@ const Buttons = ({ models, active, handleButtonClick }) => {
             <span className={`${active === model.id ? "btns__span--active" : ""} btns__span`}>
               {model.title}
             </span>
-            {/* <button className={`${active === model.id ? "btns__button--active" : ""} btns__button`} /> */}
+            <button className={`${active === model.id ? "btns__button--active" : ""} btns__button`} />
           </li>
         ))}
       </ul>
