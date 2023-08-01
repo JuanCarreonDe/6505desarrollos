@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { useRef } from "react";
 
 const ServiciosModel = ({ objectRef, active, position }) => {
-  const computer = useGLTF("/Shields/Escudo_2.gltf");
+  const computer = useGLTF("./Shields/Escudo_2.gltf");
   // const meshRef = useRef();
   // if (computer.scene) {
   //   // Recorre los objetos del modelo y configura su material como wireframe

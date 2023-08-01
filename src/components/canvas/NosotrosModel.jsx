@@ -4,7 +4,7 @@ import { Plane } from "../Floor.jsx";
 
 
 const NosotrosModel = ({objectRef, active, position}) => {
-  const computer = useGLTF("/Shields/Escudo_1.gltf");
+  const computer = useGLTF("./Shields/Escudo_1.gltf");
 
   useFrame(() => {
     // Manipulate or access the properties of the object using the ref
