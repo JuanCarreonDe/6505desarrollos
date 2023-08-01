@@ -208,6 +208,8 @@ height: 10px;
   flex-direction: column;
   align-items: center;
   backdrop-filter: blur(5px);
+  height: 65vh;
+  overflow: scroll;
 }
 
 .escene__info--active{
@@ -218,25 +220,25 @@ height: 10px;
   opacity: 1;
 }
 
-.info__h1{
-  /* color: rgb(153, 0, 255); */
-  font-weight: 100;
-  position: relative;
+.info__title{
+  display: flex;
+  align-items: center;
   width: 100%;
-  margin-left: 80px;
-  /* margin-bottom: 15px; */
+  margin-bottom: 15px;
 }
 
-.info__h1::before{
+.info__h1{
+  /* color: rgb(153, 0, 255); */
+  /* font-weight: 100; */
+  width: 100%;
+  margin-left: 5px;
+}
+
+.info__span{
   content: "";
   display: block;
-  position: absolute;
   width: 30px;
   height: 1px;
-  top: 0;
-  bottom: 0;
-  left: -40px;
-  margin: auto;
   background: #fff;
 }
 
@@ -245,7 +247,7 @@ height: 10px;
 }
 
 .info__p{
-  /* margin-bottom: 25px; */
+  margin-bottom: 25px;
 }
 
 /* Nosotros / Servicios*/
@@ -275,7 +277,7 @@ height: 10px;
   display: flex;
   align-items: center;
   gap: 15px;
-  /* margin-bottom: 15px; */
+  margin-bottom: 15px;
   /* border: 1px solid red; */
 }
 
@@ -301,7 +303,7 @@ height: 10px;
 }
 
 .comencemos__h2{
-  /* margin-bottom: 5px; */
+  margin-bottom: 5px;
 }
 
 .comencemos__p{
@@ -311,7 +313,7 @@ height: 10px;
 }
 
 .comencemos__inputs{
-  /* margin-bottom: 20px; */
+  margin-bottom: 20px;
 }
 
 .comencemos__input{
@@ -328,7 +330,7 @@ height: 10px;
   font-family: "Monserrat", sans-serif;
   resize: none;
   height: 100px;
-  /* margin-bottom: 20px; */
+  margin-bottom: 20px;
 }
 .comencemos__condiciones{
   display: flex;
@@ -435,6 +437,27 @@ background-image: linear-gradient(to right,#c01a87, #5574f2);
   /* mix-blend-mode: difference; */
   /* display: none; */
 }
+
+::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  /* background-color: darkgrey; */
+
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-button{
+  display: none;
+  background: none;
+}
+
 
 @media (max-width: 500px) {
   .cursor, .cursor2 {
