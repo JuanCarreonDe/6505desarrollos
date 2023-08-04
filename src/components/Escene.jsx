@@ -15,7 +15,7 @@ import { BlendFunction, KernelSize, Resolution } from "postprocessing";
 import { GridPlane, Plane } from "./Floor";
 import CanvasLoader from "./Loader";
 import Computers from "./canvas/Computers";
-import Porshe from "./canvas/Porshe";
+import CerroSilla from "./canvas/CerroSilla";
 import Planet from "./canvas/Planet";
 import Buttons from "./Buttons";
 import Annotations from "./Annotations";
@@ -26,6 +26,8 @@ import NosotrosModel from "./canvas/NosotrosModel";
 import ServiciosModel from "./canvas/ServiciosModel";
 import ContactoModel from "./canvas/ContactoModel";
 import ComencemosModel from "./canvas/ComencemosModel";
+// import {Montaña, Montaña2} from "./canvas/Montaña";
+import Montañas from "./canvas/Montaña";
 
 // import info
 // import PlanetInfo from "./Info/PlanetInfo";
@@ -54,9 +56,6 @@ const Animate = ({ controls, lerping, positionCamera, target }) => {
       if (controls.current.maxDistance === Infinity) {
         camera.position.lerp(positionCamera, 0.05);
         controls.current.target.lerp(target, 0.05);
-        // setTimeout(() => {
-        //   controls.current.maxDistance = 60;
-        // }, 7000);
       } else {
         if (!isNear(camera.position, positionCamera, 1.5)) {
           camera.position.lerp(positionCamera, 0.05);
@@ -105,7 +104,7 @@ const Escene = () => {
     const { x, y, z } = calculateTargetCoordinates(model, radius, center);
 
     setActive(model.id);
-    setTarget({ x, y, z }); -
+    setTarget({ x, y, z });
     setPositionCamera(model.camera);
     setLerping(true);
     console.log({ x, y, z });
@@ -115,12 +114,13 @@ const Escene = () => {
   // effect to welcome animation
   useEffect(() => {
     setPositionCamera({
-      x: 15,
-      y: 5,
-      z: 10,
+      x: 160,
+      y: 20,
+      z: -10,
     });
-    setTarget({ x: 0, y: 0, z: 0 });
+    setTarget({ x: 70, y: 20, z: -1 });
     setLerping(true);
+    // ref.current.minDistance = 80;
   }, []);
 
   const posNosotros = calculateTargetCoordinates(
@@ -147,33 +147,44 @@ const Escene = () => {
     center,
     -2
   );
+  const posCerroSilla = calculateTargetCoordinates(
+    models.at(3),
+    radius,
+    center,
+    -2
+  );
 
   return (
     <div className="hero__canvas">
       <Canvas
         camera={{ position: [0, 700, 10], fov: 30 }}
-        onPointerDown={() => setLerping(false)}
-        style={{ 
+        onPointerDown={() => {
+          setLerping(false)
+          ref.current.maxDistance = 500;
+        }}
+        onChange={(e) => {
+          console.log(e?.camera.position);
+        }}
+        style={{
           // background: "#1a1444"
-          background: "#000"
-         }}
+          background: "#0e0728",
+        }}
         onWheel={() => {
           setLerping(false);
-          ref.current.maxDistance = 150;
+          ref.current.maxDistance = 500;
         }}
       >
-        {/* <fog attach="fog" args={["#1a1444", 80, 300]} /> */}
         <Suspense fallback={<CanvasLoader />}>
           <OrbitControls
             ref={ref}
             minDistance={25}
-            // maxPolarAngle={Math.PI / 2.2}
+            maxPolarAngle={Math.PI / 2.2}
             // set panning limits
             onChange={(e) => {
               const maxX = 500;
               const minX = -500;
               const maxY = 100;
-              const minY = -100;
+              const minY = -1;
               const maxZ = 500;
               const minZ = -500;
               const x = e?.target.target.x;
@@ -188,13 +199,12 @@ const Escene = () => {
               if (z < minZ || z > maxZ) {
                 e?.target.target.setZ(z < minZ ? minZ : maxZ);
               }
-              // console.log(e?.target.target);
+              console.log(e?.target.target);
             }}
           />
 
           {/* args = color="#76c564" near={5} far={100} */}
-          {/* <fog attach="fog" args={["#000", 100, 240]} /> */}
-          {/* <fogExp2 color={"#29153d"} density={0.05} attach="fog" isFogExp2 /> */}
+          <fog attach="fog" args={["#0e0728", 50, 600]} />
           <Stars
             radius={200} // Radius of the inner sphere (default=100)
             depth={50} // Depth of area where stars should fit (default=50)
@@ -204,34 +214,37 @@ const Escene = () => {
             fade // Faded dots (default=false)
             speed={5}
           />
-          {/* <Porshe /> */}
+          {/* <CerroSilla /> */}
           <ambientLight intensity={0.6} />
-          <Porshe />
+          <CerroSilla />
           <NosotrosModel
             objectRef={nosotrosRef}
             active={models.at(0).active}
             position={[posNosotros.x, 0.5, posNosotros.z]}
           />
           <ServiciosModel
-                      objectRef={serviciosRef}
-                      active={models.at(1).active}
-                      position={[posServicios.x, 0.5, posServicios.z]}
+            objectRef={serviciosRef}
+            active={models.at(1).active}
+            position={[posServicios.x, 0.5, posServicios.z]}
           />
           <ContactoModel
-                      objectRef={contactoRef}
-                      active={models.at(2).active}
-                      position={[posContacto.x, 0.5, posContacto.z]}
+            objectRef={contactoRef}
+            active={models.at(2).active}
+            position={[posContacto.x, 0.5, posContacto.z]}
           />
           <ComencemosModel
-                      objectRef={comencemosRef}
-                      active={models.at(3).active}
-                      position={[posComencemos.x, 0.5, posComencemos.z]}
+            objectRef={comencemosRef}
+            active={models.at(3).active}
+            position={[posComencemos.x, 0.5, posComencemos.z]}
           />
           {/* <Computers
             position={[postComputer.x, 0.2, postComputer.z]}
             active={models.at(1).active}
           /> */}
           {/* <Plane /> */}
+          {/* <Montaña/> */}
+          <Montañas />
+          {/* <Montaña2/> */}
           <Plane />
           <GridPlane />
           {/* <SphereM /> */}
@@ -280,7 +293,18 @@ const Escene = () => {
         />
       </nav>
 
-      <div className="escene__title title">
+      <div
+        className="escene__title title"
+        onClick={() => {
+          setPositionCamera({
+            x: 160,
+            y: 20,
+            z: -10,
+          });
+          setTarget({ x: 70, y: 20, z: -1 });
+          setLerping(true);
+        }}
+      >
         <img src={logo} className="title__img"></img>
       </div>
 

@@ -263,7 +263,7 @@ const Plane = () => {
     <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} >
       <planeGeometry attach="geometry" args={[floorWidth, floorHeight]} />
       {/* <meshStandardMaterial map={texture} alphaMap={texture} transparent={true} fog={true} /> */}
-      <meshBasicMaterial color={"#000"}/>
+      <meshBasicMaterial color={"#262157"}/>
     </mesh>
   );
 };
@@ -272,7 +272,8 @@ function GridPlane() {
   return (
     <gridHelper
       position={[0, 0, 0]}
-      args={[floorWidth, 100, "#002f3a", "#002f3a"]}
+      // args={[floorWidth, 100, "#002f3a", "#002f3a"]}
+      args={[floorWidth, 100, "#585794", "#585794"]}
     />    
   );
 }

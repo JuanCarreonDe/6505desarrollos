@@ -14,17 +14,19 @@ function Annotations({
           model,
           radius,
           center,
-          -2.5
+          -2.8
         );
         return (
           <Html key={model.id} position={[x, model.target.y, z]}>
-            <p
+            <div className="annotations"
               onClick={() => {
                 handleButtonClick(model);
               }}
             >
+              <p>
               {model.id + 1}
-            </p>
+              </p>
+            </div>
             {/* <svg
                 height="34"
                 width="34"

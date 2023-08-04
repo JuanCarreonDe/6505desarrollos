@@ -30,5 +30,13 @@ export const models = [
     camera: { x: 0, y: 5, z: 10 },
     target: { x: 0, y: 3.5, z: 0},
     active: false
-  }
+  },
+  // {
+  //   id: 4,
+  //   title: "Cerro Silla",
+  //   description: "",
+  //   camera: { x: 0, y: 5, z: 10 },
+  //   target: { x: 0, y: 3.5, z: 0},
+  //   active: false
+  // }
 ];

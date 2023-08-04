@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ComputersCanvas } from "./canvas";
-import { PorsheCanvas } from "./canvas";
+import { CerroSilla } from "./canvas";
 import { PlanetCanvas } from "./canvas";
 import Escene from "./Escene";
 

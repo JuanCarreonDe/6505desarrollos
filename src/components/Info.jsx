@@ -18,8 +18,10 @@ const Info = ({ models, active, setActive }) => {
           } escene__info`}
         >
           <div className="info__close" onClick={() => setActive(-1)}>
-            <span className="close__span close__span--1"></span>
-            <span className="close__span close__span--2"></span>
+            <span className="close__span 
+            "
+            >x</span>
+            {/* <span className="close__span close__span--2"></span> */}
           </div>
           {active === 0 ? <Nosotros /> : ""}
           {active === 1 ? <Servicios /> : ""}

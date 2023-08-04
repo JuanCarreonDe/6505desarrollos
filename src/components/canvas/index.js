@@ -1,6 +1,6 @@
 import PlanetCanvas from "./Planet";
 import ComputersCanvas from "./Computers";
-import PorsheCanvas from "./Porshe";
+import CerroSilla from "./CerroSilla";
 import SphereCanvas from "./SphereM";
 
-export { ComputersCanvas, PorsheCanvas, PlanetCanvas, SphereCanvas };
+export { ComputersCanvas, CerroSilla, PlanetCanvas, SphereCanvas };
