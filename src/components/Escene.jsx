@@ -35,7 +35,7 @@ import Montañas from "./canvas/Montaña";
 // import SomethingInfo from "./Info/SomethingInfo";
 
 // consts
-const radius = 150; // Radio del circulo
+const radius = 250; // Radio del circulo
 const center = { x: 0, z: 0 }; // Centro del circulo (coordenadas x y z)
 // const GruopIds = ["PlanetInfo", "PcInfo", "SomethingInfo"];
 // const ChildDiv = ["img_01", "img_02", "img_03"];
@@ -181,12 +181,12 @@ const Escene = () => {
             maxPolarAngle={Math.PI / 2.2}
             // set panning limits
             onChange={(e) => {
-              const maxX = 500;
-              const minX = -500;
+              const maxX = 250;
+              const minX = -250;
               const maxY = 100;
               const minY = -1;
-              const maxZ = 500;
-              const minZ = -500;
+              const maxZ = 250;
+              const minZ = -250;
               const x = e?.target.target.x;
               const y = e?.target.target.y;
               const z = e?.target.target.z;

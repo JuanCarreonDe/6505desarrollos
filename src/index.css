@@ -90,6 +90,7 @@ canvas {
   z-index: 999;
   transition: all 0.3s;
   animation-delay: all 0.3s;
+  /* color: #f0650e; */
 }
 .annotations:hover {
   transform: scale(1.2);
@@ -146,38 +147,34 @@ canvas {
   flex-direction: column;
   align-items: center;
   justify-content: end;
-  font-size: 16px;
+  font-size: 19px;
   width: 100%;
   transition: transform 0.3s;
+  animation-delay: all 0.3s;
   /* border: 1px solid red; */
+  color: #a3a3a3;
+
 }
 
 .btns__li:hover {
   transform: scale(1.1);
-  transition: transform 0.3s;
-}
-
-.btns__li:hover > .btns__button {
-  background: #a200ff;
-}
-
-.btns__span {
-  color: #a3a3a3;
+  color: #fff;
 }
 
 .btns__span--active {
-  font-size: 14px;
+  font-size: 22px;
   font-weight: bold;
   color: #fff;
   transition: all 0.3s;
   animation-delay: all 0.3s;
+  color: #f0650e;
 }
 
 .btns__button {
   width: 15px;
   height: 15px;
   background: none;
-  border: 1px solid #a200ff;
+  border: 1px solid #f0650e;
   border-radius: 50%;
   color: #fff;
   text-align: center;
@@ -189,7 +186,7 @@ canvas {
 }
 
 .btns__button--active {
-  background: #a200ff;
+  background: #f0650e;
   width: 10px;
   height: 10px;
 }
@@ -246,7 +243,7 @@ canvas {
   align-items: center;
   backdrop-filter: blur(5px);
   max-height: 60vh;
-  /* overflow: scroll; */
+  overflow: hidden;
 }
 
 .escene__info--active {
@@ -347,6 +344,7 @@ canvas {
   gap: 15px;
 }
 
+
 .comencemos__h2 {
   margin-bottom: 5px;
 }
@@ -368,6 +366,7 @@ canvas {
   font-family: "Monserrat", sans-serif;
   width: 100%;
 }
+
 .comencemos__textarea {
   width: 100%;
   padding: 6px 10px;
@@ -376,6 +375,9 @@ canvas {
   resize: none;
   height: 100px;
   margin-bottom: 20px;
+}
+.comencemos__input:focus-visible, .comencemos__textarea:focus-visible{
+  outline: 2px solid #f0650e;
 }
 .comencemos__condiciones {
   display: flex;
@@ -392,7 +394,7 @@ canvas {
   color: #fff;
   border: none;
   padding: 10px;
-  background: rgb(188 188 188 / 50%);
+  background: #f0650e;
   transition: all 0.4s;
   transition-delay: all 0.4s;
   /* background: rgb(196,24,132);
@@ -400,7 +402,7 @@ background: -moz-linear-gradient(90deg, rgba(196,24,132,1) 0%, rgba(85,116,241,1
 background: -webkit-linear-gradient(90deg, rgba(196,24,132,1) 0%, rgba(85,116,241,1) 100%);
 background: linear-gradient(90deg, rgba(196,24,132,1) 0%, rgba(85,116,241,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c41884",endColorstr="#5574f1",GradientType=1); */
-  font-size: 10px;
+  font-size: 14px;
   /* background-image: linear-gradient(to right,#c01a87, #5574f2); */
 }
 
@@ -409,6 +411,34 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c41884",endCo
   background: #fff;
   color: #000;
 }
+
+
+.comencemos__mensaje{
+  /* border: 1px solid red; */
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  top: -7%;
+  margin: auto;
+  position: absolute;
+  width: 50%;
+  height: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 0 0 15px 15px;
+  background-color: #f0650e;
+  transition: all 0.4s;
+  transition-delay: all 0.4s;
+}
+
+.comencemos__mensaje--active{
+  top: 0;
+}
+
 
 /* close info */
 .info__close {
@@ -420,6 +450,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c41884",endCo
   transition: all 0.4s;
   transition-delay: all 0.4s;
   color: rgba(255, 255, 255, 0.7);
+  color: #f0650e;
 }
 
 .info__close:hover{
@@ -438,11 +469,12 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c41884",endCo
 
 .cursor {
   z-index: 1001;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   /* border: 1px solid #fff; */
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #f0650e;
   /* position: absolute; */
   pointer-events: none;
   transform: translate3d(-30px, 0, 0);
@@ -459,8 +491,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c41884",endCo
 
 .cursor2 {
   z-index: 1000;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   border: 1px solid #ffffff;
   /* background-color: #ffffff; */

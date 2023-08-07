@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Form from "./Form";
 import Nosotros from "./info/Nosotros";
 import Servicios from "./info/Servicios";
 import Contacto from "./info/Contacto";

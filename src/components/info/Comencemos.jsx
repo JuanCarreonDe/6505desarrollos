@@ -11,26 +11,34 @@ const Comencemos = () => {
     user_mensaje: '',
     aceptar_terminos: false,
   });
-  const [errorMessage, setErrorMessage] = useState('');
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  
+  const setTimeoutMessage = (timeoutMessage) => {
+    setMessage(timeoutMessage)
+
+    setTimeout(() => {
+      setMessage("")
+    }, 3000);
+  }
   const sendEmail = (e) => {
     e.preventDefault();
 
     if (!formState.aceptar_terminos) {
-      setErrorMessage('Debes aceptar los términos y condiciones.');
+      setTimeoutMessage('Debes aceptar los términos y condiciones.');
       return;
     }
 
     // Validación de campos obligatorios
     for (const key in formState) {
       if (formState[key] === '' && key !== 'aceptar_terminos') {
-        setErrorMessage('Debes llenar todos los campos obligatorios.');
+        setTimeoutMessage('Debes llenar todos los campos obligatorios.');
         return;
       }
     }
 
-    setErrorMessage('');
+    setTimeoutMessage('');
     setIsSubmitting(true);
 
     emailjs
@@ -38,7 +46,7 @@ const Comencemos = () => {
       .then(
         (result) => {
           console.log(result.text);
-          // Limpiar los campos después de enviar el correo
+          setTimeoutMessage('✅ Mensaje enviado correctamente');
           setFormState({
             user_nombre: '',
             user_empresa: '',
@@ -70,6 +78,16 @@ const Comencemos = () => {
   return (
     <>
       <div className="info__body">
+
+
+      {/* {Message &&  */}
+      <div           className={`${
+        message ? "comencemos__mensaje--active" : ""
+      } comencemos__mensaje`}
+    >
+      <p className="mensaje__p">{message}</p>
+      </div>
+      {/* } */}
         <div className="comencemos__text">
           <h2 className="comencemos__h2">
             Si tienes una idea innovadora que podamos apoyar
@@ -136,9 +154,8 @@ const Comencemos = () => {
               He leído y acepto la{" "}
               <span className="comencemos__span">Política de Privacidad</span>
             </label>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <button className="comencemos__button" type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Enviando...' : 'ENVIAR MENSAJE'}
+              {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
             </button>
           </div>
         </form>

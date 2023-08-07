@@ -249,8 +249,8 @@ import * as THREE from 'three'
 import img from "../assets/pattern.png"
 import { useLoader } from '@react-three/fiber'
 
-const floorWidth = 1000;
-const floorHeight = 1000;
+const floorWidth = 1500;
+const floorHeight = 1500;
 
 const Plane = () => {
   const texture = useLoader(THREE.TextureLoader, img)
