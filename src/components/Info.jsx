@@ -16,7 +16,7 @@ const Info = ({ models, active, setActive }) => {
             active === model.id ? "escene__info--active" : ""
           } escene__info`}
         >
-          <div className="info__close" onClick={() => setActive(-1)}>
+          <div className="info__close" onClick={() => setActive(-3)}>
             <span className="close__span 
             "
             >x</span>

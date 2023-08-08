@@ -1,7 +1,6 @@
 // import { useFrame } from "@react-three/fiber";
 // import { useMemo, useRef, SphereBufferGeometry } from "react";
 // import * as THREE from 'three';
-// import img from "../assets/pattern.png"
 // import { useLoader } from '@react-three/fiber'
 
 // const floorWidth = 700;
@@ -246,19 +245,18 @@
 
 
 import * as THREE from 'three'
-import img from "../../assets/pattern.png"
 import { useLoader } from '@react-three/fiber'
 
 const floorWidth = 1500;
 const floorHeight = 1500;
 
 const Plane = () => {
-  const texture = useLoader(THREE.TextureLoader, img)
-  texture.wrapS = THREE.RepeatWrapping; 
+  // const texture = useLoader(THREE.TextureLoader, img)
+  // texture.wrapS = THREE.RepeatWrapping; 
 
-  texture.wrapT = THREE.RepeatWrapping; 
+  // texture.wrapT = THREE.RepeatWrapping; 
 
-  texture.repeat.set(30, 30); // Repetir la textura 2 veces en dirección horizontal y vertical
+  // texture.repeat.set(30, 30); // Repetir la textura 2 veces en dirección horizontal y vertical
   return (
     <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} >
       <planeGeometry attach="geometry" args={[floorWidth, floorHeight]} />

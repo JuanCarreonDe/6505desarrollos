@@ -24,18 +24,18 @@ const Comencemos = () => {
   }
   const sendEmail = (e) => {
     e.preventDefault();
-
-    if (!formState.aceptar_terminos) {
-      setTimeoutMessage('Debes aceptar los términos y condiciones.');
-      return;
-    }
-
+    
     // Validación de campos obligatorios
     for (const key in formState) {
       if (formState[key] === '' && key !== 'aceptar_terminos') {
-        setTimeoutMessage('Debes llenar todos los campos obligatorios.');
+        setTimeoutMessage('Debes llenar todos los campos.');
         return;
       }
+    }
+    
+    if (!formState.aceptar_terminos) {
+      setTimeoutMessage('Debes aceptar los términos y condiciones.');
+      return;
     }
 
     setTimeoutMessage('');

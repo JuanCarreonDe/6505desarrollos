@@ -101,6 +101,36 @@ canvas {
   color: #000;
 }
 
+.escene__welcome{
+position: absolute;
+    top: -200vh;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    opacity: 0;
+    /* border: 1px solid; */
+    width: 66%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    transition: all 1.3s;
+    transition-delay: all 1.3s;
+    /* animation-delay: all 1s; */
+    font-family: "Orbitron", sans-serif;
+  font-size: 70px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin: auto;
+
+}
+
+.escene__welcome--active{
+  top: 0;
+  opacity: 1;
+  /* transition: all 1s;
+  transition-delay: all 1s; */
+}
 /* nav */
 .escene__btns {
   position: absolute;
@@ -346,7 +376,7 @@ canvas {
 
 
 .comencemos__h2 {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .comencemos__p {
@@ -556,5 +586,9 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c41884",endCo
 
   .btns__button {
     display: block;
+  }
+  .escene__welcome{
+    width: 90%;
+    font-size: 40px;
   }
 }

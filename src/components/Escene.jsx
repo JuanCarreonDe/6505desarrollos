@@ -87,6 +87,7 @@ const Escene = () => {
   const [target, setTarget] = useState();
   const [lerping, setLerping] = useState(false);
   const [active, setActive] = useState();
+  const [endAnimation, setEndAnimation] = useState(false);
 
   const ref = useRef();
   const nosotrosRef = useRef();
@@ -105,7 +106,7 @@ const Escene = () => {
     setTarget({ x, y, z });
     setPositionCamera(model.camera);
     setLerping(true);
-    console.log({ x, y, z });
+    // console.log({ x, y, z });
     ref.current.maxDistance = 20;
   };
 
@@ -118,6 +119,7 @@ const Escene = () => {
     });
     setTarget({ x: 70, y: 20, z: -1 });
     setLerping(true);
+    setActive(-2);
     // ref.current.minDistance = 80;
   }, []);
 
@@ -145,170 +147,175 @@ const Escene = () => {
     center,
     -2
   );
-  const posCerroSilla = calculateTargetCoordinates(
-    models.at(3),
-    radius,
-    center,
-    -2
-  );
+  // const posCerroSilla = calculateTargetCoordinates(
+  //   models.at(3),
+  //   radius,
+  //   center,
+  //   -2
+  // );
 
   return (
     <section className="section__hero hero">
-    <div className="hero__canvas">
-      <Canvas
-        camera={{ position: [0, 700, 10], fov: 30 }}
-        onPointerDown={() => {
-          setLerping(false)
-          ref.current.maxDistance = 500;
-        }}
-        onChange={(e) => {
-          console.log(e?.camera.position);
-        }}
-        style={{
-          // background: "#1a1444"
-          background: "#0e0728",
-        }}
-        onWheel={() => {
-          setLerping(false);
-          ref.current.maxDistance = 500;
-        }}
-      >
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls
-            ref={ref}
-            minDistance={25}
-            maxPolarAngle={Math.PI / 2.2}
-            // set panning limits
-            onChange={(e) => {
-              const maxX = 250;
-              const minX = -250;
-              const maxY = 100;
-              const minY = -1;
-              const maxZ = 250;
-              const minZ = -250;
-              const x = e?.target.target.x;
-              const y = e?.target.target.y;
-              const z = e?.target.target.z;
-              if (x < minX || x > maxX) {
-                e?.target.target.setX(x < minX ? minX : maxX);
-              }
-              if (y < minY || y > maxY) {
-                e?.target.target.setY(y < minY ? minY : maxY);
-              }
-              if (z < minZ || z > maxZ) {
-                e?.target.target.setZ(z < minZ ? minZ : maxZ);
-              }
-              console.log(e?.target.target);
-            }}
-          />
+      <div className="hero__canvas">
+        <Canvas
+          camera={{ position: [0, 700, 10], fov: 30 }}
+          onPointerDown={() => {
+            setLerping(false);
+            ref.current.maxDistance = 500;
+          }}
+          // onChange={(e) => {
+          // console.log(e?.camera.position);
+          // }}
+          style={{
+            // background: "#1a1444"
+            background: "#0e0728",
+          }}
+          onWheel={() => {
+            setLerping(false);
+            ref.current.maxDistance = 500;
+          }}
+        >
+          <Suspense fallback={<CanvasLoader />}>
+            <OrbitControls
+              ref={ref}
+              minDistance={25}
+              maxPolarAngle={Math.PI / 2.2}
+              // set panning limits
+              onChange={(e) => {
+                const maxX = 250;
+                const minX = -250;
+                const maxY = 100;
+                const minY = -1;
+                const maxZ = 250;
+                const minZ = -250;
+                const x = e?.target.target.x;
+                const y = e?.target.target.y;
+                const z = e?.target.target.z;
+                if (x < minX || x > maxX) {
+                  e?.target.target.setX(x < minX ? minX : maxX);
+                }
+                if (y < minY || y > maxY) {
+                  e?.target.target.setY(y < minY ? minY : maxY);
+                }
+                if (z < minZ || z > maxZ) {
+                  e?.target.target.setZ(z < minZ ? minZ : maxZ);
+                }
+                if (e?.target.target.z < -0.956 && active === -2) {
+                  console.log("je");
+                  // setEndAnimation(true)
+                  setActive(-1)
+                }
+                
+                console.log(e?.target.target.x);
+              }}
+            />
 
-          {/* args = color="#76c564" near={5} far={100} */}
-          <fog attach="fog" args={["#0e0728", 50, 600]} />
-          <Stars
-            radius={200} // Radius of the inner sphere (default=100)
-            depth={50} // Depth of area where stars should fit (default=50)
-            count={10000} // Amount of stars (default=5000)
-            factor={6} // Size factor (defa0ult=4)
-            saturation={1} // Saturation 0-1 (default=0)
-            fade // Faded dots (default=false)
-            speed={5}
-          />
-          {/* <CerroSilla /> */}
-          <ambientLight intensity={0.6} />
-          <CerroSilla />
-          <NosotrosModel
-            objectRef={nosotrosRef}
-            active={models.at(0).active}
-            position={[posNosotros.x, 0.5, posNosotros.z]}
-          />
-          <ServiciosModel
-            objectRef={serviciosRef}
-            active={models.at(1).active}
-            position={[posServicios.x, 0.5, posServicios.z]}
-          />
-          <ContactoModel
-            objectRef={contactoRef}
-            active={models.at(2).active}
-            position={[posContacto.x, 0.5, posContacto.z]}
-          />
-          <ComencemosModel
-            objectRef={comencemosRef}
-            active={models.at(3).active}
-            position={[posComencemos.x, 0.5, posComencemos.z]}
-          />
-          {/* <Computers
-            position={[postComputer.x, 0.2, postComputer.z]}
-            active={models.at(1).active}
-          /> */}
-          {/* <Plane /> */}
-          {/* <Montaña/> */}
-          <Montañas />
-          {/* <Montaña2/> */}
-          <Plane />
-          <GridPlane />
-          {/* <SphereM /> */}
-          <Animate
-            controls={ref}
-            positionCamera={positionCamera}
-            target={target}
-            lerping={lerping}
-          />
-          <Annotations
-            handleButtonClick={handleButtonClick}
-            calculateTargetCoordinates={calculateTargetCoordinates}
+            {/* args = color="#76c564" near={5} far={100} */}
+            <fog attach="fog" args={["#0e0728", 50, 600]} />
+            <Stars
+              radius={200} // Radius of the inner sphere (default=100)
+              depth={50} // Depth of area where stars should fit (default=50)
+              count={10000} // Amount of stars (default=5000)
+              factor={6} // Size factor (defa0ult=4)
+              saturation={1} // Saturation 0-1 (default=0)
+              fade // Faded dots (default=false)
+              speed={5}
+            />
+            {/* <CerroSilla /> */}
+            <ambientLight intensity={0.6} />
+            <CerroSilla />
+            <NosotrosModel
+              objectRef={nosotrosRef}
+              active={models.at(0).active}
+              position={[posNosotros.x, 0.5, posNosotros.z]}
+            />
+            <ServiciosModel
+              objectRef={serviciosRef}
+              active={models.at(1).active}
+              position={[posServicios.x, 0.5, posServicios.z]}
+            />
+            <ContactoModel
+              objectRef={contactoRef}
+              active={models.at(2).active}
+              position={[posContacto.x, 0.5, posContacto.z]}
+            />
+            <ComencemosModel
+              objectRef={comencemosRef}
+              active={models.at(3).active}
+              position={[posComencemos.x, 0.5, posComencemos.z]}
+            />
+            <Montañas />
+            <Plane />
+            <GridPlane />
+            <Animate
+              controls={ref}
+              positionCamera={positionCamera}
+              target={target}
+              lerping={lerping}
+            />
+            <Annotations
+              handleButtonClick={handleButtonClick}
+              calculateTargetCoordinates={calculateTargetCoordinates}
+              models={models}
+              radius={radius}
+              center={center}
+            />
+            <EffectComposer multisampling={0}>
+              <Bloom
+                intensity={2.0} // The bloom intensity.
+                blurPass={undefined} // A blur pass.
+                kernelSize={KernelSize.SMALL} // blur kernel size
+                luminanceThreshold={0.5} // luminance threshold. Raise this value to mask out darker elements in the scene.
+                luminanceSmoothing={0.5} // smoothness of the luminance threshold. Range is [0, 1]
+                mipmapBlur={true} // Enables or disables mipmap blur.
+                resolutionX={Resolution.AUTO_SIZE} // The horizontal resolution.
+                resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
+              />
+              <Noise
+                premultiply // enables or disables noise premultiplication
+                // blendFunction={BlendFunction.SCREEN} // blend mode
+              />
+            </EffectComposer>
+          </Suspense>
+          <Preload all />
+        </Canvas>
+
+        {/* navbar */}
+        <nav className="escene__btns">
+          <Buttons
             models={models}
-            radius={radius}
-            center={center}
+            active={active}
+            // setActive={setActive}
+            handleButtonClick={handleButtonClick}
           />
-          <EffectComposer multisampling={0}>
-            <Bloom
-              intensity={2.0} // The bloom intensity.
-              blurPass={undefined} // A blur pass.
-              kernelSize={KernelSize.SMALL} // blur kernel size
-              luminanceThreshold={0.5} // luminance threshold. Raise this value to mask out darker elements in the scene.
-              luminanceSmoothing={0.5} // smoothness of the luminance threshold. Range is [0, 1]
-              mipmapBlur={true} // Enables or disables mipmap blur.
-              resolutionX={Resolution.AUTO_SIZE} // The horizontal resolution.
-              resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
-            />
-            <Noise
-              premultiply // enables or disables noise premultiplication
-              // blendFunction={BlendFunction.SCREEN} // blend mode
-            />
-            {/* <SSAO />
-            <SMAA /> */}
-          </EffectComposer>
-        </Suspense>
-        <Preload all />
-      </Canvas>
+        </nav>
 
-      {/* navbar */}
-      <nav className="escene__btns">
-        <Buttons
-          models={models}
-          active={active}
-          // setActive={setActive}
-          handleButtonClick={handleButtonClick}
-        />
-      </nav>
+        <div
+          className="escene__title title"
+          onClick={() => {
+            setPositionCamera({
+              x: 160,
+              y: 20,
+              z: -10,
+            });
+            setTarget({ x: 70, y: 20, z: -1 });
+            setLerping(true);
+            setActive(-1);
+          }}
+        >
+          <img src={logo} className="title__img"></img>
+        </div>
 
-      <div
-        className="escene__title title"
-        onClick={() => {
-          setPositionCamera({
-            x: 160,
-            y: 20,
-            z: -10,
-          });
-          setTarget({ x: 70, y: 20, z: -1 });
-          setLerping(true);
-        }}
-      >
-        <img src={logo} className="title__img"></img>
+        <div
+          className={`${
+            active === -1 ? "escene__welcome--active" : ""
+          } escene__welcome`}
+        >
+          <p>Soluciones hechas a tu medida</p>
+        </div>
+
+        <Info models={models} active={active} setActive={setActive} />
       </div>
-
-      <Info models={models} active={active} setActive={setActive} />
-    </div>
     </section>
   );
 };
