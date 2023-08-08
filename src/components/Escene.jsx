@@ -201,12 +201,12 @@ const Escene = () => {
                   e?.target.target.setZ(z < minZ ? minZ : maxZ);
                 }
                 if (e?.target.target.z < -0.956 && active === -2) {
-                  console.log("je");
+                  // console.log("je");
                   // setEndAnimation(true)
                   setActive(-1)
                 }
                 
-                console.log(e?.target.target.x);
+                // console.log(e?.target.target.x);
               }}
             />
 
