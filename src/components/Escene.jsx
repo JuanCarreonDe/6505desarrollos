@@ -12,11 +12,9 @@ import {
 import { BlendFunction, KernelSize, Resolution } from "postprocessing";
 
 // imports components
-import { GridPlane, Plane } from "./Floor";
+import { GridPlane, Plane } from "./canvas/Floor";
 import CanvasLoader from "./Loader";
-import Computers from "./canvas/Computers";
 import CerroSilla from "./canvas/CerroSilla";
-import Planet from "./canvas/Planet";
 import Buttons from "./Buttons";
 import Annotations from "./Annotations";
 import Info from "./Info";
@@ -155,6 +153,7 @@ const Escene = () => {
   );
 
   return (
+    <section className="section__hero hero">
     <div className="hero__canvas">
       <Canvas
         camera={{ position: [0, 700, 10], fov: 30 }}
@@ -310,6 +309,7 @@ const Escene = () => {
 
       <Info models={models} active={active} setActive={setActive} />
     </div>
+    </section>
   );
 };
 

@@ -10,7 +10,11 @@ const CerroSilla = () => {
     <group position={[-10, -41, -30]} scale={[25, 25, 25]} rotation={[0, 3.2, 0]}>
       {/* Modelo con wireframe */}
       <mesh {...model.nodes["EXPORT_GOOGLE_SAT_WM"]}>
-        <meshBasicMaterial attach="material" color="#585794" wireframe />
+        <meshBasicMaterial attach="material"
+        color="#585794"
+        // color="#fff" 
+        wireframe
+        />
       </mesh>
     </group>
     <group position={[-10, -41, -30]} scale={[25, 25, 25]} rotation={[0, 3.2, 0]}>

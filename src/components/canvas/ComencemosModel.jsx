@@ -1,6 +1,6 @@
 import {useGLTF} from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Plane } from "../Floor.jsx";
+import { Plane } from "./Floor.jsx";
 
 
 const ComencemosModel = ({objectRef, active, position}) => {

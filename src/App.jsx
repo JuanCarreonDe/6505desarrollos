@@ -1,15 +1,14 @@
-import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import Content from "./components/Content";
 import "./App.css";
 import Cursor from "./components/Cursor";
+import Escene from "./components/Escene";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Cursor />
-        <Content />
+        <Escene />
       </BrowserRouter>
     </>
   );

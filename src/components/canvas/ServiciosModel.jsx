@@ -1,6 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Plane } from "../Floor.jsx";
+import { Plane } from "./Floor.jsx";
 import * as THREE from "three";
 import { useRef } from "react";
 

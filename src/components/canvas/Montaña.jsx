@@ -9,7 +9,7 @@ const Montaña1 = () => {
   // Crear un material de wireframe
   const wireframeMaterial = new THREE.MeshBasicMaterial({
     color: "#585794",
-    // color: "#fc0303",
+    // color: "#fff",
     wireframe: true,
   });
 
