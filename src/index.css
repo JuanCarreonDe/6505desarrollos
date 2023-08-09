@@ -23,6 +23,7 @@ body {
   font-family: "Monserrat", sans-serif;
   margin: 0;
   overflow: hidden;
+  user-select: none;
 }
 
 section {
@@ -225,7 +226,7 @@ position: absolute;
 .escene__title {
   position: absolute;
   top: 0;
-  left: 5vh;
+  left: 0;
   height: 15vh;
   width: 100%;
   display: flex;
@@ -243,12 +244,71 @@ position: absolute;
     border: 1px solid red; */
 }
 
-.title__img {
+.title__logo {
   height: 40%;
   /* width: 25%; */
+  margin-left: 5vh;
   object-fit: contain;
   /* border: 1px solid green; */
 }
+
+/* .title__instructions{
+  border: 1px solid red;
+  position: absolute;
+  top: 0;
+  right: 5%;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 3vh;
+  height: fit-content;
+}
+
+.instructions__img{
+  opacity: 0;
+  transition: all 0.3s;
+  animation-delay: all 0.3s;
+}
+
+.instructions__img--active{
+  position: absolute;
+  right: 10vh;
+  width: 5vh;
+  object-fit: cover;
+  border: 1px solid green;
+  transition: all 0.3s;
+  animation-delay: all 0.3s;
+}
+
+.instructions__img--active:hover{
+  transform: scale(1.1);
+}
+
+
+.instructions__info{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -100vh;
+  margin: auto;
+  height: fit-content;
+  width: fit-content;
+  background: red;
+  border-radius:15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  transition: all .5s;
+  transition-delay: all .5s;
+  list-style: inside;
+  backdrop-filter: blur(5px);
+} 
+
+.instructions__info--active{
+  bottom: 15vh;
+
+} */
 
 /* info */
 .escene__info {
@@ -563,6 +623,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c41884",endCo
     justify-content: center;
     left: 0;
   }
+
+.title__logo {
+  margin-left: 0;
+}
+  
   .title__img {
     width: 50%;
     height: auto;

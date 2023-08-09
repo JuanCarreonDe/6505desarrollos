@@ -34,7 +34,7 @@ const Comencemos = () => {
     }
     
     if (!formState.aceptar_terminos) {
-      setTimeoutMessage('Debes aceptar los términos y condiciones.');
+      setTimeoutMessage('Debes aceptar la política de privacidad.');
       return;
     }
 
@@ -45,7 +45,6 @@ const Comencemos = () => {
       .sendForm('service_tc6de8f', 'template_ypjs1eu', form.current, 'gGACcUY4VLAjLX-JP')
       .then(
         (result) => {
-          console.log(result.text);
           setTimeoutMessage('✅ Mensaje enviado correctamente');
           setFormState({
             user_nombre: '',

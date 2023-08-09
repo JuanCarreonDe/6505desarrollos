@@ -2,14 +2,12 @@
 import { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, Stars } from "@react-three/drei";
-import {
-  EffectComposer,
-  SSAO,
-  Bloom,
-  Noise,
-  SMAA,
-} from "@react-three/postprocessing";
-import { BlendFunction, KernelSize, Resolution } from "postprocessing";
+// import {
+//   EffectComposer,
+//   Bloom,
+//   Noise,
+// } from "@react-three/postprocessing";
+// import { KernelSize, Resolution } from "postprocessing";
 
 // imports components
 import { GridPlane, Plane } from "./canvas/Floor";
@@ -19,24 +17,19 @@ import Buttons from "./Buttons";
 import Annotations from "./Annotations";
 import Info from "./Info";
 import { models } from "../constants";
-import logo from "../assets/Logo.png";
 import NosotrosModel from "./canvas/NosotrosModel";
 import ServiciosModel from "./canvas/ServiciosModel";
 import ContactoModel from "./canvas/ContactoModel";
 import ComencemosModel from "./canvas/ComencemosModel";
-// import {Montaña, Montaña2} from "./canvas/Montaña";
 import Montañas from "./canvas/Montaña";
 
-// import info
-// import PlanetInfo from "./Info/PlanetInfo";
-// import PcInfo from "./Info/PcInfo";
-// import SomethingInfo from "./Info/SomethingInfo";
+import logo from "../assets/Logo.png";
+
 
 // consts
 const radius = 250; // Radio del circulo
 const center = { x: 0, z: 0 }; // Centro del circulo (coordenadas x y z)
-// const GruopIds = ["PlanetInfo", "PcInfo", "SomethingInfo"];
-// const ChildDiv = ["img_01", "img_02", "img_03"];
+
 
 function isNear(numero1, numero2, tolerancia) {
   const diferencia = Math.sqrt(
@@ -82,21 +75,19 @@ const calculateTargetCoordinates = (
   return { x, y: model.target.y, z };
 };
 
+
+
 const Escene = () => {
   const [positionCamera, setPositionCamera] = useState();
   const [target, setTarget] = useState();
   const [lerping, setLerping] = useState(false);
   const [active, setActive] = useState();
-  const [endAnimation, setEndAnimation] = useState(false);
 
   const ref = useRef();
   const nosotrosRef = useRef();
   const serviciosRef = useRef();
   const contactoRef = useRef();
   const comencemosRef = useRef();
-
-  // const {camera, gl} = useThree();
-  const [camera, setCamera] = useState([]);
 
   // function to move the camera, change the target and add the active class to the button
   const handleButtonClick = (model) => {
@@ -106,9 +97,9 @@ const Escene = () => {
     setTarget({ x, y, z });
     setPositionCamera(model.camera);
     setLerping(true);
-    // console.log({ x, y, z });
     ref.current.maxDistance = 20;
   };
+
 
   // effect to welcome animation
   useEffect(() => {
@@ -120,7 +111,6 @@ const Escene = () => {
     setTarget({ x: 70, y: 20, z: -1 });
     setLerping(true);
     setActive(-2);
-    // ref.current.minDistance = 80;
   }, []);
 
   const posNosotros = calculateTargetCoordinates(
@@ -147,12 +137,6 @@ const Escene = () => {
     center,
     -2
   );
-  // const posCerroSilla = calculateTargetCoordinates(
-  //   models.at(3),
-  //   radius,
-  //   center,
-  //   -2
-  // );
 
   return (
     <section className="section__hero hero">
@@ -163,11 +147,7 @@ const Escene = () => {
             setLerping(false);
             ref.current.maxDistance = 500;
           }}
-          // onChange={(e) => {
-          // console.log(e?.camera.position);
-          // }}
           style={{
-            // background: "#1a1444"
             background: "#0e0728",
           }}
           onWheel={() => {
@@ -201,16 +181,11 @@ const Escene = () => {
                   e?.target.target.setZ(z < minZ ? minZ : maxZ);
                 }
                 if (e?.target.target.z < -0.956 && active === -2) {
-                  // console.log("je");
-                  // setEndAnimation(true)
-                  setActive(-1)
+                  setActive(-1);
                 }
-                
-                // console.log(e?.target.target.x);
               }}
             />
 
-            {/* args = color="#76c564" near={5} far={100} */}
             <fog attach="fog" args={["#0e0728", 50, 600]} />
             <Stars
               radius={200} // Radius of the inner sphere (default=100)
@@ -221,7 +196,6 @@ const Escene = () => {
               fade // Faded dots (default=false)
               speed={5}
             />
-            {/* <CerroSilla /> */}
             <ambientLight intensity={0.6} />
             <CerroSilla />
             <NosotrosModel
@@ -260,7 +234,7 @@ const Escene = () => {
               radius={radius}
               center={center}
             />
-            <EffectComposer multisampling={0}>
+            {/* <EffectComposer multisampling={0}>
               <Bloom
                 intensity={2.0} // The bloom intensity.
                 blurPass={undefined} // A blur pass.
@@ -275,35 +249,26 @@ const Escene = () => {
                 premultiply // enables or disables noise premultiplication
                 // blendFunction={BlendFunction.SCREEN} // blend mode
               />
-            </EffectComposer>
+            </EffectComposer> */}
           </Suspense>
           <Preload all />
         </Canvas>
 
-        {/* navbar */}
-        <nav className="escene__btns">
-          <Buttons
-            models={models}
-            active={active}
-            // setActive={setActive}
-            handleButtonClick={handleButtonClick}
-          />
-        </nav>
-
-        <div
-          className="escene__title title"
-          onClick={() => {
-            setPositionCamera({
-              x: 160,
-              y: 20,
-              z: -10,
-            });
-            setTarget({ x: 70, y: 20, z: -1 });
-            setLerping(true);
-            setActive(-1);
-          }}
-        >
-          <img src={logo} className="title__img"></img>
+        <div className="escene__title title">
+          <img
+            src={logo}
+            className="title__logo"
+            onClick={() => {
+              setPositionCamera({
+                x: 160,
+                y: 20,
+                z: -10,
+              });
+              setTarget({ x: 70, y: 20, z: -1 });
+              setLerping(true);
+              setActive(-1);
+            }}
+          ></img>
         </div>
 
         <div
@@ -315,6 +280,15 @@ const Escene = () => {
         </div>
 
         <Info models={models} active={active} setActive={setActive} />
+
+        {/* navbar */}
+        <nav className="escene__btns">
+          <Buttons
+            models={models}
+            active={active}
+            handleButtonClick={handleButtonClick}
+          />
+        </nav>
       </div>
     </section>
   );
